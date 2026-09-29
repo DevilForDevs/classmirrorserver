@@ -186,4 +186,11 @@ Route::middleware('auth')->group(function () {
             'ownerRowId' => null,
         ]);
     })->name('resource.upload.page');
+
+    Route::get(
+        '/miscellaneous-resources/create',
+        function () {
+            return view('miscellaneous_resources.create');
+        }
+    )->name('miscellaneous-resources.create');
 });

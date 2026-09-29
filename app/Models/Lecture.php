@@ -13,6 +13,7 @@ class Lecture extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'class_id',
         'topic_id',
         'started_at',
         'ended_at',

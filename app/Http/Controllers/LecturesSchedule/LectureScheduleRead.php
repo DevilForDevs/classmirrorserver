@@ -10,11 +10,27 @@ class LectureScheduleRead extends Controller
 {
     public function getSchedule(Request $request)
     {
-        $schedule = LectureSchedule::orderBy('day')
+        $request->validate([
+            'class_id' => 'required|integer|exists:classes,class_id',
+            'semester' => 'required|integer|min:1|max:8',
+        ]);
+
+        $schedule = LectureSchedule::where(
+            'class_id',
+            $request->class_id
+        )
+            ->where(
+                'semester',
+                $request->semester
+            )
+            ->orderBy('day')
             ->orderBy('period')
             ->orderBy('start_time')
             ->get();
 
-        return response()->json($schedule);
+        return response()->json([
+            'message' => 'Lecture schedule fetched successfully',
+            'schedule' => $schedule
+        ], 200);
     }
 }

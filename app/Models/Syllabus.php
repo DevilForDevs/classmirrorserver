@@ -13,9 +13,12 @@ class Syllabus extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'session',
+        'class_id',
+        'class_subject_id ',
+        'paper_id',
         'topic',
         'total_lectures',
+        'teacher_id',
         'author',
         'description',
         'semester'

@@ -13,6 +13,8 @@ class LectureSchedule extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'class_id',
+        'semester',
         'day',
         'start_time',
         'period',
